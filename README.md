@@ -9,6 +9,7 @@ HELPFULL INFO:
 
 Scripts moved to this package:
 * [bpt_crafting]( https://github.com/bitpredator/bpt_crafting )
+* [bpt_ammujob] ( https://github.com/bitpredator/bpt_ammujob )
 
 
 ATTENTION: You are not authorized to change the name of the resource.
