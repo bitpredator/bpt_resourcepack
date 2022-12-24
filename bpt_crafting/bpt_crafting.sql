@@ -39,5 +39,8 @@ INSERT INTO `bpt_items` (`name`, `label`) VALUES
 	('copper', 'Rame'),
 	('gold', 'oro'),
 	('gunpowder', 'polvere da sparo'),
-	('ammo-sniper', '7.62 NATO')
+	('ammo-sniper', '7.62 NATO'),
+	('grain', 'grano'),
+	('flour', 'farina'),
+	('bread', 'panino vuoto')
 ;

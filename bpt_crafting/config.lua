@@ -49,6 +49,11 @@ Categories = {
 	Label = 'Ballas',
 	Image = 'ballas',
 	Jobs = {'ballas'}
+},
+['baker'] = {
+	Label = 'Baker',
+	Image = 'baker',
+	Jobs = {'baker'}
 }
 
 
@@ -299,6 +304,52 @@ Recipes = { -- Enter Item name and then the speed value! The higher the value th
 	}
 },
 
+['iron'] = {
+	Level = 0,
+	Category = 'import', 
+	isGun = false, 
+	Jobs = {'import'}, 
+	JobGrades = {}, 
+	Amount = 3, 
+	SuccessRate = 100, 
+	requireBlueprint = false, 
+	Time = 10, 
+	Ingredients = { 
+		['hammer'] = 1,
+		['ironsheet'] = 10
+	}
+},
+
+['bread'] = {
+	Level = 0,
+	Category = 'baker', 
+	isGun = false, 
+	Jobs = {'baker'}, 
+	JobGrades = {}, 
+	Amount = 5, 
+	SuccessRate = 100, 
+	requireBlueprint = false, 
+	Time = 200, 
+	Ingredients = { 
+		['flour'] = 1
+	}
+},
+
+['flour'] = {
+	Level = 0,
+	Category = 'baker', 
+	isGun = false, 
+	Jobs = {'baker'}, 
+	JobGrades = {}, 
+	Amount = 1, 
+	SuccessRate = 100, 
+	requireBlueprint = false, 
+	Time = 120, 
+	Ingredients = { 
+		['grain'] = 10
+	}
+},
+
 
 
 },
@@ -312,6 +363,7 @@ Workbenches = { -- Every workbench location, leave {} for jobs if you want every
 	{coords = vector3(129.217590, -1283.802246, 29.263062), jobs = {'unicorn'}, blip = false, recipes = {'almondmilk','slicedchips'}, radius = 1.0 },
     {coords = vector3(-416.993408, -1683.468140, 19.018311), jobs = {'dustman'}, blip = false, recipes = {'ironsheet','recycled_paper','paper'}, radius = 1.0 },
 	{coords = vector3(83.156044, -1960.259277, 18.041016), jobs = {'ballas'}, blip = false, recipes = {'cigarette_paper', 'cigarrette_opium'}, radius = 1.0 },
+	{coords = vector3(2342.202148, 3144.817627, 48.202148), jobs = {'baker'}, blip = false, recipes = {'flour', 'bread'}, radius = 1.0 },
 },
  
 
