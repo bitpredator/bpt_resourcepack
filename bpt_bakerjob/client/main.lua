@@ -1,6 +1,6 @@
-local HasAlreadyEnteredMarker, OnJob, IsNearCustomer, CustomerIsEnteringVehicle, CustomerEnteredVehicle,
+local HasAlreadyEnteredMarker, CurrentAction,
     CurrentActionData = false, false, false, false, false, {}
-local CurrentCustomer, CurrentCustomerBlip, DestinationBlip, targetCoords, LastZone, CurrentAction, CurrentActionMsg
+local LastZone, CurrentActionMsg
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
