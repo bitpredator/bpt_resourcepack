@@ -3,7 +3,6 @@ Locales['it'] = {
 	['dialogbox_playerid'] = 'ID giocatore (8 caratteri massimo):',
 	['dialogbox_amount'] = 'Importo (8 caratteri massimo):',
 	['dialogbox_xyz'] = 'Posizione XYZ (massimo 50 caratteri):',
-
 	-- Menu Notification
 	['missing_rights'] = 'Non sei ~r~autorizato~w~',
 	['players_nearby'] = 'Nessun giocatore nelle vicinanze',
@@ -13,33 +12,9 @@ Locales['it'] = {
 	['accessories_no_helmet'] = 'Non hai un casco/cappello',
 	['accessories_no_mask'] = 'Non hai una maschera',
     ['you_received_money_bank'] = 'hai ricevuto del denaro in banca',
-	['you_promoted'] = 'hai promosso',
-	['you_promoted_by'] = 'sei stato promosso da',
-	['government_permit_required'] = 'è necessario un permesso governativo',
-	['not_permission'] = 'non hai il permesso',
-	['you_demoted'] = 'sei stato retrocesso',
-	['you_been_demoted_from'] = 'sei stato retrocesso da',
-	['cannot_downgrade'] = 'non puoi retrocedere ulteriormente',
-	['player_not_organization'] = 'il giocatore non è nella tua organizzazione',
-	['not_allowed'] = 'non hai il permesso',
-	['have_recruited'] = 'hai recluatato',
-	['been_hired_by'] = 'sei stato assunto da',
-	['you_fired'] = 'sei stato licenziato',
-	['have_fired_from'] = 'Sei stato licenziato da',
-	['player_not_company'] = 'il giocatore non è nella tua compagnia',
-	['admin_noclipon'] = 'NoClip  attivato',
-	['admin_noclipoff'] = 'NoClip  disattivato',
-	['admin_godmodeon'] = 'Modalità invincibile  attivata',
-	['admin_godmodeoff'] = 'Modalità invincibile  disattivata',
-	['admin_ghoston'] = 'Modalità fantasma  attivata',
-	['admin_ghostoff'] = 'Modalita fantasma  disattivata',
-	['admin_vehicleflip'] = 'Auto in poszione',
-	['admin_nomarker'] = 'Nessun indicatore sulla mappa!',
-
 	-- Main Menu
 	['mainmenu_subtitle'] = 'MENU INTERAZIONE',
 	['approach'] = 'Approccio: ~b~%s',
-
 	-- Wallet Menu
 	['wallet_title'] = 'Portafoglio',
 	['wallet_job_button'] = 'Attività commerciale:%s -%s',
@@ -49,10 +24,8 @@ Locales['it'] = {
 	['wallet_check_driver_button'] = 'Guarda patente di guida',
 	['wallet_show_firearms_button'] = 'Mostra porto d\'armi',
 	['wallet_check_firearms_button'] = 'Guarda porto d\'armi',
-
 	-- Bills Menu
 	['bills_title'] = 'Fatture',
-
 	-- Clothes Menu
 	['clothes_title'] = 'abbigliamento',
 	['clothes_torso'] = 'Torso',
@@ -60,17 +33,14 @@ Locales['it'] = {
 	['clothes_shoes'] = 'Scarpe',
 	['clothes_bag'] = 'Borsa',
 	['clothes_bproof'] = 'Giubbotto antiproiettile',
-
 	-- Accessories Menu
 	['accessories_title'] = 'Accessori',
 	['accessories_ears'] = 'Accessorio per le orecchie',
 	['accessories_glasses'] = 'Occhiali',
 	['accessories_helmet'] = 'Cappello / Casco',
 	['accessories_mask'] = 'Maschera',
-
 	-- Animation Menu
 	['animation_title'] = 'Animazioni',
-
 	['animation_party_title'] = 'Animazioni Festive',
 	['animation_party_smoke'] = 'Fuma una sigaretta',
 	['animation_party_playsong'] = 'Ascolta una canzone',
@@ -82,14 +52,12 @@ Locales['it'] = {
 	['animation_party_rock'] = 'Rock n roll con le mani',
 	['animation_party_drunk'] = 'Ubriaco sul posto',
 	['animation_party_vomit'] = 'Vomita dalla macchina',
-
 	['animation_salute_title'] = 'Saluti Vari',
 	['animation_salute_saluate'] = 'Saluto veloce',
 	['animation_salute_serrer'] = 'Stringi la mano',
 	['animation_salute_tchek'] = 'Saluto da duro',
 	['animation_salute_bandit'] = 'Saluto tra fratelli',
 	['animation_salute_military'] = 'Saluto Militare',
-
 	['animation_work_title'] = 'Lavori',
 	['animation_work_suspect'] = 'Arrenditi',
 	['animation_work_fisherman'] = 'Pesca',
@@ -109,7 +77,6 @@ Locales['it'] = {
 	['animation_work_hammer'] = 'Muratore: Martella il muro',
 	['animation_work_beg'] = 'Senzatetto: chiedi soldi',
 	['animation_work_statue'] = 'mimo: Fai la statua',
-
 	['animation_mood_title'] = 'Gesti',
 	['animation_mood_felicitate'] = 'Congratulati',
 	['animation_mood_nice'] = 'Sei stato super',
@@ -130,14 +97,12 @@ Locales['it'] = {
 	['animation_mood_fuckyou'] = 'Dito medio',
 	['animation_mood_wanker'] = 'Fai una se*a',
 	['animation_mood_suicide'] = 'sparati in testa',
-
 	['animation_sports_title'] = 'Animazioni Sport',
 	['animation_sports_muscle'] = 'Mostra i muscoli',
 	['animation_sports_weightbar'] = 'Alza barra bilancere',
 	['animation_sports_pushup'] = 'Fai flessioni',
 	['animation_sports_abs'] = 'Fai addominali',
 	['animation_sports_yoga'] = 'Fai Yoga',
-
 	['animation_other_title'] = 'Animazioni Varie',
 	['animation_other_sit'] = 'Siediti ',
 	['animation_other_waitwall'] = 'Aspetta al muro',
@@ -148,11 +113,10 @@ Locales['it'] = {
 	['animation_other_search'] = 'Bussola umana',
 	['animation_other_selfie'] = 'Fatti un selfie',
 	['animation_other_door'] = 'Ascolta alla porta',
-
 	['animation_pegi_title'] = 'PEGI 21',
 	['animation_pegi_hsuck'] = 'Fatti fare un bo***ino in macchina',
 	['animation_pegi_fsuck'] = 'Donna lecca la macchina',
-	['animation_pegi_hfuck'] = 'Uomo lucca la macchina',
+	['animation_pegi_hfuck'] = 'Uomo lecca la macchina',
 	['animation_pegi_ffuck'] = 'Donna s***a in macchina',
 	['animation_pegi_scratch'] = 'Grattati le balle',
 	['animation_pegi_charm'] = 'Donna: saluto provocante',
@@ -162,25 +126,12 @@ Locales['it'] = {
 	['animation_pegi_strip2'] = 'Esibizione Donna stript club 2',
 	['animation_pegi_stripfloor'] = 'Danza Donna stript club per terra',
 	['animation_attitudes_title'] = 'Approccio',
-
-	-- Boss Management Menu
-
-	['bossmanagement_title'] = 'Gestione aziendale',
-	['bossmanagement_chest_button'] = 'Conto Aziendale:',
-	['bossmanagement_hire_button'] = 'Recluta',
-	['bossmanagement_fire_button'] = 'Licenzia',
-	['bossmanagement_promote_button'] = 'Promuovi',
-	['bossmanagement_demote_button'] = 'Degrada',
-
 	-- Main Menu
 	['mainmenu_subtitle'] = 'menu interazioni',
-	
-
 	-- Admin Menu
 	['admin_title'] = 'Amministrazione',
 	['admin_goto_button'] = 'TP su Player',
 	['admin_bring_button'] = 'TP Player su di me',
-	['admin_tpxyz_button'] = 'TP su Coordinate',
 	['admin_noclip_button'] = 'NoClip',
 	['admin_givemoney_button'] = 'Dai denaro ',
 	['admin_godmode_button'] = 'Modalità invincibile',
@@ -189,6 +140,12 @@ Locales['it'] = {
 	['admin_flipveh_button'] = 'Rimetti il veicolo in posizione',
 	['admin_givebank_button'] = 'Dai del denaro in banca',
 	['admin_showname_button'] = 'Mostra/Nascondi i nomi dei giocatori',
-	['admin_changeskin_button'] = 'Cambia aspetto',
-	['admin_saveskin_button'] = 'Salva aspetto'
+	['admin_noclipon'] = 'NoClip  attivato',
+	['admin_noclipoff'] = 'NoClip  disattivato',
+	['admin_godmodeon'] = 'Modalità invincibile  attivata',
+	['admin_godmodeoff'] = 'Modalità invincibile  disattivata',
+	['admin_ghoston'] = 'Modalità fantasma  attivata',
+	['admin_ghostoff'] = 'Modalita fantasma  disattivata',
+	['admin_vehicleflip'] = 'Auto in poszione',
+	['admin_nomarker'] = 'Nessun indicatore sulla mappa!'
 }
