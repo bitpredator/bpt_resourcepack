@@ -186,7 +186,7 @@ Config.Admin = {
 	{
 		name = 'goto',
 		label = _U('admin_goto_button'),
-		groups = {'_dev', 'admin', 'mod'},
+		groups = {'admin', 'mod'},
 		command = function()
 			local plyId = KeyboardInput('BPT_BOX_ID', _U('dialogbox_playerid'), '', 8)
 
@@ -204,7 +204,7 @@ Config.Admin = {
 	{
 		name = 'bring',
 		label = _U('admin_bring_button'),
-		groups = {'_dev', 'admin', 'mod'},
+		groups = {'admin', 'mod'},
 		command = function()
 			local plyId = KeyboardInput('BPT_BOX_ID', _U('dialogbox_playerid'), '', 8)
 
@@ -220,27 +220,9 @@ Config.Admin = {
 		end
 	},
 	{
-		name = 'tpxyz',
-		label = _U('admin_tpxyz_button'),
-		groups = {'_dev', 'admin'},
-		command = function()
-			local pos = KeyboardInput('BPT_BOX_XYZ', _U('dialogbox_xyz'), '', 50)
-
-			if pos ~= nil and pos ~= '' then
-				local _, _, x, y, z = string.find(pos, '([%d%.]+) ([%d%.]+) ([%d%.]+)')
-						
-				if x ~= nil and y ~= nil and z ~= nil then
-					SetEntityCoords(plyPed, x + .0, y + .0, z + .0)
-				end
-			end
-
-			RageUI.CloseAll()
-		end
-	},
-	{
 		name = 'noclip',
 		label = _U('admin_noclip_button'),
-		groups = {'_dev', 'admin', 'mod'},
+		groups = {'admin', 'mod'},
 		command = function()
 			Player.noclip = not Player.noclip
 
@@ -272,7 +254,7 @@ Config.Admin = {
 	{
 		name = 'godmode',
 		label = _U('admin_godmode_button'),
-		groups = {'_dev', 'admin'},
+		groups = {'admin'},
 		command = function()
 			Player.godmode = not Player.godmode
 
@@ -288,7 +270,7 @@ Config.Admin = {
 	{
 		name = 'ghostmode',
 		label = _U('admin_ghostmode_button'),
-		groups = {'_dev', 'admin'},
+		groups = {'admin'},
 		command = function()
 			Player.ghostmode = not Player.ghostmode
 
@@ -304,7 +286,7 @@ Config.Admin = {
 	{
 		name = 'repairveh',
 		label = _U('admin_repairveh_button'),
-		groups = {'_dev', 'admin'},
+		groups = {'admin'},
 		command = function()
 			local plyVeh = GetVehiclePedIsIn(plyPed, false)
 			SetVehicleFixed(plyVeh)
@@ -314,7 +296,7 @@ Config.Admin = {
 	{
 		name = 'flipveh',
 		label = _U('admin_flipveh_button'),
-		groups = {'_dev', 'admin'},
+		groups = {'admin'},
 		command = function()
 			local plyCoords = GetEntityCoords(plyPed)
 			local newCoords = plyCoords + vector3(0.0, 2.0, 0.0)
@@ -363,7 +345,7 @@ Config.Admin = {
 	{
 		name = 'showname',
 		label = _U('admin_showname_button'),
-		groups = {'_dev', 'admin', 'mod'},
+		groups = {'admin', 'mod'},
 		command = function()
 			Player.showName = not Player.showName
 
@@ -373,24 +355,6 @@ Config.Admin = {
 					Player.gamerTags[targetPlayer] = nil
 				end
 			end
-		end
-	},
-	{
-		name = 'changeskin',
-		label = _U('admin_changeskin_button'),
-		groups = {'_dev', 'admin'},
-		command = function()
-			RageUI.CloseAll()
-			Citizen.Wait(100)
-			TriggerEvent('esx_skin:openSaveableMenu')
-		end
-	},
-	{
-		name = 'saveskin',
-		label = _U('admin_saveskin_button'),
-		groups = {'_dev', 'admin'},
-		command = function()
-			TriggerEvent('esx_skin:requestSaveSkin')
 		end
 	}
 }

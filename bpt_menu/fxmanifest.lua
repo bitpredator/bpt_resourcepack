@@ -5,7 +5,7 @@ lua54 'yes'
 
 author 'bitpredator'
 description 'bpt_menu developed for fivem, compatible with esx'
-version '0.0.2'
+version '0.0.3'
 
 dependency 'es_extended'
 
@@ -16,7 +16,7 @@ shared_scripts {
 }
 
 server_scripts {
-	'@mysql-async/lib/MySQL.lua',
+	'@oxmysql/lib/MySQL.lua',
 	'server/main.lua'
 }
 
