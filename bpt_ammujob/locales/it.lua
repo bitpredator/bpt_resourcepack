@@ -22,5 +22,5 @@ Locales['it'] = {
   ['no_players_near'] = 'nessun giocatore nelle vicinanze',
   ['boss_actions'] =  'Azioni del capo',
   ['blip_ammu'] =  'Armeria.',
-  ['ammu' ] =  'ammu'
+  ['ammu'] =  'ammu'
 }
