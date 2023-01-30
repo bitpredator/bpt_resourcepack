@@ -1,5 +1,5 @@
 # bpt_resourcepack
-Script FiveM Copyright (C) 2022 bitpredator
+Script FiveM Copyright (C) 2022-2023 bitpredator
 
 HELPFULL INFO:
 * I decided to merge all my scripts into one package to make it easier to work and download resources.
