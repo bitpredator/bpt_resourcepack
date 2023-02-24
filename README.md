@@ -5,13 +5,6 @@ HELPFULL INFO:
 * I decided to merge all my scripts into one package to make it easier to work and download resources.
 * Each script has its own README file its own LICENSE, make sure you READ it so you know how to install everything
 
-
-
-Scripts moved to this package:
-* [bpt_crafting]( https://github.com/bitpredator/bpt_crafting )
-* [bpt_ammujob]( https://github.com/bitpredator/bpt_ammujob )
-
-
 ATTENTION: You are not authorized to change the name of the resource.
 
 If you want to contribute you can open a pull request.
