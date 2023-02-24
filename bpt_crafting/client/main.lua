@@ -229,7 +229,7 @@ RegisterNUICallback(
 )
 
 function SendTextMessage(msg)
-    exports['mythic_notify']:SendAlert('inform', msg)
+   exports['mythic_notify']:SendAlert('inform', msg)
 end
 
 function DrawText3D(x, y, z, text)

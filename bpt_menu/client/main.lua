@@ -53,7 +53,6 @@ Citizen.CreateThread(function()
 	RefreshMoney()
 
 	RMenu.Add('rageui', 'personal', RageUI.CreateMenu(Config.MenuTitle, _U('mainmenu_subtitle'), 0, 0, 'commonmenu', 'interaction_bgd', 255, 255, 255, 255))
-	RMenu.Add('personal', 'wallet', RageUI.CreateSubMenu(RMenu.Get('rageui', 'personal'), _U('wallet_title')))
 	RMenu.Add('personal', 'billing', RageUI.CreateSubMenu(RMenu.Get('rageui', 'personal'), _U('bills_title')))
 	RMenu.Add('personal', 'clothes', RageUI.CreateSubMenu(RMenu.Get('rageui', 'personal'), _U('clothes_title')))
 	RMenu.Add('personal', 'accessories', RageUI.CreateSubMenu(RMenu.Get('rageui', 'personal'), _U('accessories_title')))
@@ -321,68 +320,6 @@ function RenderPersonalMenu()
 			else
 				RageUI.Button(buttonLabel, nil, {RightLabel = "→→→"}, true, function() end, RMenu['personal'][i].Menu)
 			end
-		end
-	end)
-end
-
-function RenderWalletMenu()
-	RageUI.DrawContent({header = true, instructionalButton = true}, function()
-		RageUI.Button(_U('wallet_job_button', ESX.PlayerData.job.label, ESX.PlayerData.job.grade_label), nil, {}, true, function() end)
-
-		if Config.JSFourIDCard then
-			RageUI.Button(_U('wallet_show_idcard_button'), nil, {}, true, function(Hovered, Active, Selected)
-				if (Selected) then
-					local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
-
-					if closestDistance ~= -1 and closestDistance <= 3.0 then
-						TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(closestPlayer))
-					else
-						ESX.ShowNotification(_U('players_nearby'))
-					end
-				end
-			end)
-
-			RageUI.Button(_U('wallet_check_idcard_button'), nil, {}, true, function(Hovered, Active, Selected)
-				if (Selected) then
-					TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(PlayerId()))
-				end
-			end)
-
-			RageUI.Button(_U('wallet_show_driver_button'), nil, {}, true, function(Hovered, Active, Selected)
-				if (Selected) then
-					local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
-
-					if closestDistance ~= -1 and closestDistance <= 3.0 then
-						TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(closestPlayer), 'driver')
-					else
-						ESX.ShowNotification(_U('players_nearby'))
-					end
-				end
-			end)
-
-			RageUI.Button(_U('wallet_check_driver_button'), nil, {}, true, function(Hovered, Active, Selected)
-				if (Selected) then
-					TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(PlayerId()), 'driver')
-				end
-			end)
-
-			RageUI.Button(_U('wallet_show_firearms_button'), nil, {}, true, function(Hovered, Active, Selected)
-				if (Selected) then
-					local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
-
-					if closestDistance ~= -1 and closestDistance <= 3.0 then
-						TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(closestPlayer), 'weapon')
-					else
-						ESX.ShowNotification(_U('players_nearby'))
-					end
-				end
-			end)
-
-			RageUI.Button(_U('wallet_check_firearms_button'), nil, {}, true, function(Hovered, Active, Selected)
-				if (Selected) then
-					TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(PlayerId()), 'weapon')
-				end
-			end)
 		end
 	end)
 end

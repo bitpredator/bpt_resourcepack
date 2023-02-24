@@ -12,7 +12,6 @@ Keys = {
 
 ESX = nil
 local menuOpen = false
-local wasOpen = false
 
 Citizen.CreateThread(function()
 	ESX = exports["es_extended"]:getSharedObject()
@@ -23,85 +22,6 @@ Citizen.CreateThread(function()
 
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
-
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
-		local playerPed = PlayerPedId()
-		local coords = GetEntityCoords(playerPed)
-
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.LegnoDealer.coords, true) < 1.50 then
-			if not menuOpen then
-				ESX.ShowHelpNotification(_U('dealer_prompt'))
-
-				if IsControlJustReleased(0, Keys['E']) then
-					wasOpen = true
-					OpenLegnoShop()
-				end
-			else
-				Citizen.Wait(0)
-			end
-			else
-			if wasOpen then
-				wasOpen = false
-				ESX.UI.Menu.CloseAll()
-			end
-			Citizen.Wait(0)
-		end
-	end
-end)
-
-function OpenLegnoShop()
-	ESX.UI.Menu.CloseAll()
-	local elements = {}
-	menuOpen = true
-
-	for k, v in pairs(ESX.GetPlayerData().inventory) do
-		local price = Config.LegnoDealerItems[v.name]
-
-		if price and v.count > 0 then
-			table.insert(elements, {
-				label = ('%s - <span style="color:green;">%s</span>'):format(v.label, _U('dealer_item', ESX.Math.GroupDigits(price))),
-				name = v.name,
-				price = price,
-
-				-- menu properties
-				type = 'slider',
-				value = 1,
-				min = 1,
-				max = v.count
-			})
-		end
-	end
-
-	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'Legno_shop', {
-		title    = _U('dealer_title'),
-		align    = 'top-left',
-		elements = elements
-	}, function(data, menu)
-		TriggerEvent("mythic_progbar:client:progress", {
-			name = "vendita_Legna",
-			duration = 2000,
-			label = "Vendita In Corso",
-			useWhileDead = false,
-			canCancel = true,
-			controlDisables = {
-				disableMovement = true,
-				disableCarMovement = true,
-				disableMouse = false,
-				disableCombat = true,
-			},
-		}, function(status)
-		if not status then
-		-- Do Something If Event Wasn't Cancelled
-		end
-		end)
-		TriggerServerEvent('bpt_taglialegna:sellLegno', data.current.name, data.current.value)
-	end, function(data, menu)
-		menu.close()
-		menuOpen = false
-	end)
-end
 
 AddEventHandler('onResourceStop', function(resource)
 	if resource == GetCurrentResourceName() then

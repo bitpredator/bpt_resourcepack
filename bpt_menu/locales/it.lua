@@ -15,15 +15,6 @@ Locales['it'] = {
 	-- Main Menu
 	['mainmenu_subtitle'] = 'MENU INTERAZIONE',
 	['approach'] = 'Approccio: ~b~%s',
-	-- Wallet Menu
-	['wallet_title'] = 'Portafoglio',
-	['wallet_job_button'] = 'Attività commerciale:%s -%s',
-	['wallet_show_idcard_button'] = 'Mostra carta d\'identità',
-	['wallet_check_idcard_button'] = 'Guarda la carta d\'identità',
-	['wallet_show_driver_button'] = 'Mostra patente di guida',
-	['wallet_check_driver_button'] = 'Guarda patente di guida',
-	['wallet_show_firearms_button'] = 'Mostra porto d\'armi',
-	['wallet_check_firearms_button'] = 'Guarda porto d\'armi',
 	-- Bills Menu
 	['bills_title'] = 'Fatture',
 	-- Clothes Menu

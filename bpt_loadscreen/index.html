@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Bitter:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>   
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=VT323' />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Orbitron:500' />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    
+  </head>
+
+  <body>
+
+    <div class="cursor1 cursor1-dot"></div>
+    <div class='cursor' id="cursor"></div>
+    <div class='cursor2' id="cursor2"></div>
+    <div class='cursor3' id="cursor3"></div>
+
+
+    <div id="logs">
+        <div id="log" class="log"></div>
+        <div id="debug" class="log log-top-left"></div>
+        <div class="loading-container">
+            <div class ="loading-labels">
+                <div id="INIT_BEFORE_MAP_LOADED-label" class="color-first">Pre-Map</div>
+                <div id="MAP-label" class="color-second">Map</div>
+                <div id="INIT_AFTER_MAP_LOADED-label" class="color-third">Post-Map</div>
+                <div id="INIT_SESSION-label" class="color-fourth">Session</div>
+            </div>
+            <div class="loading-bar-container">
+                <div id="INIT_BEFORE_MAP_LOADED-bar" class="loading-bar bgcolor-first"></div>
+                <div id="MAP-bar" class="loading-bar bgcolor-second"></div>
+                <div id="INIT_AFTER_MAP_LOADED-bar" class="loading-bar bgcolor-third"></div>
+                <div id="INIT_SESSION-bar" class="loading-bar bgcolor-fourth"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <header class="cd-header">
+        <div class="header-wrapper">
+            <div class="nav-but-wrap">
+                <div class="menu-icon hover-target" id="menu-button">
+                    <span class="menu-icon__line menu-icon__line-left"></span>
+                    <span class="menu-icon__line"></span>
+                    <span class="menu-icon__line menu-icon__line-right"></span>
+                </div>                  
+            </div>                  
+        </div>              
+    </header>
+
+
+    <div class="nav">
+        <div class="nav__content">
+            <ul class="nav__list">
+            </ul>
+        </div>
+    </div>  
+
+
+    <div class="header">
+
+      <div class="inner-header flex"></div>
+
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+            <path class="waves1" id="gentle-wave1" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            <path class="waves2" id="gentle-wave2" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            <path class="waves3" id="gentle-wave3" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            <path class="waves4" id="gentle-wave4" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave1" x="48" y="0" />
+          <use xlink:href="#gentle-wave2" x="48" y="3" />
+          <use xlink:href="#gentle-wave3" x="48" y="5" />
+          <use xlink:href="#gentle-wave4" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+
+
+    <div class="container">
+      <div class="text"></div>
+      <div class="dud"></div>
+    </div>
+
+
+    <div id="music-info">
+      <div id="play-button" class="hover-target icon-button icon-play3" onclick="OnPlayClick()"></div>
+      <div id="skip-button" class="hover-target icon-button icon-next2" onclick="OnSkipClick()"></div>
+      <input type="range" class="hover-target" min="1" max="100" id="volumeSlider">
+    </div>
+
+
+    <div id="music-name">
+        <p id="now-playing"></p>
+    </div>
+
+    <div id="player"></div>
+  </body>
+  <script src="js/config.js"></script>
+  <script src="js/loadingbar.js"></script>
+  <script src="js/scriptnav.js"></script>
+  <script src="js/color-change.js"></script>
+  <script src="js/music-controls.js"></script>
+  <script src="js/music-handler.js"></script>
+  <script src="js/server-name-changer.js"></script>
+</html>
