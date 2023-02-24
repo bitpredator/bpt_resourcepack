@@ -1,7 +1,5 @@
 ESX = nil
-
 ESX = exports["es_extended"]:getSharedObject()
-
 function setCraftingLevel(identifier, level)
     MySQL.Async.execute(
         "UPDATE `users` SET `crafting_level`= @xp WHERE `identifier` = @identifier",

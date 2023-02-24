@@ -5,7 +5,7 @@ lua54 'yes'
 
 author 'bitpredator'
 description 'bpt_menu developed for fivem, compatible with esx'
-version '0.0.3'
+version '0.0.4'
 
 dependency 'es_extended'
 
@@ -22,16 +22,12 @@ server_scripts {
 
 client_scripts {
 	"dependencies/RMenu.lua",
-
 	"dependencies/components/*.lua",
-
 	"dependencies/menu/RageUI.lua",
 	"dependencies/menu/Menu.lua",
 	"dependencies/menu/MenuController.lua",
-
 	"dependencies/menu/elements/*.lua",
 	"dependencies/menu/items/*.lua",
-
 	'client/main.lua',
 	'client/other.lua'
 }

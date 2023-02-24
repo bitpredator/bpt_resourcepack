@@ -1,33 +1,6 @@
 ESX = nil
 local playersProcessingLegno = {}
-
 ESX = exports["es_extended"]:getSharedObject()
-
-RegisterServerEvent('bpt_taglialegna:sellLegno')
-AddEventHandler('bpt_taglialegna:sellLegno', function(itemName, amount)
-	local xPlayer = ESX.GetPlayerFromId(source)
-	local price = Config.LegnoDealerItems[itemName]
-	local xItem = xPlayer.getInventoryItem(itemName)
-
-	if not price then
-	end
-
-	if xItem.count < amount then
-		TriggerClientEvent('esx:showNotification', source, _U('dealer_notenough'))
-		return
-	end
-
-	price = ESX.Math.Round(price * amount)
-
-	if Config.Guadagno then
-	else
-		xPlayer.addMoney(price)
-	end
-
-	xPlayer.removeInventoryItem(xItem.name, amount)
-
-	TriggerClientEvent('esx:showNotification', source, _U('dealer_sold', amount, xItem.label, ESX.Math.GroupDigits(price)))
-end)
 
 RegisterServerEvent('bpt_taglialegna:pickedUpLegno')
 AddEventHandler('bpt_taglialegna:pickedUpLegno', function()
