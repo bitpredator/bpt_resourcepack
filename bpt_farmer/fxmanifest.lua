@@ -9,13 +9,11 @@ shared_script '@es_extended/imports.lua'
 client_script {
     '@es_extended/locale.lua',
     'client/main.lua',
-    'config.lua',
     'client/animated.lua'
 }
 
 server_scripts {
     '@es_extended/locale.lua',
     'server/main.lua',
-    'config.lua',
     '@oxmysql/lib/MySQL.lua'
 }

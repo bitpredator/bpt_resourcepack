@@ -21,7 +21,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
     PlayerData = xPlayer
 end)
  
-Citizen.CreateThread(function()
+CreateThread(function()
 	ESX = exports["es_extended"]:getSharedObject()
 end)
 
@@ -44,10 +44,10 @@ function DrawText3D(x, y, z, text, scale)
     DrawRect(_x, _y + 0.0125, 0.015 + factor, 0.03, 41, 11, 41, 90)
 end
 
--- Raccolta Patate
-Citizen.CreateThread(function()
+-- collection potato
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
 		local coords = GetEntityCoords(PlayerPedId())
         if (GetDistanceBetweenCoords(coords, 2233.21, 5081.3, 48.08, true) < 10.0) then
             DrawText3D(2233.21, 5081.3, 48.08, 'Premi ~b~[E] per raccogliere delle patate', 0.4)
@@ -57,7 +57,7 @@ Citizen.CreateThread(function()
                 if (GetDistanceBetweenCoords(coords, 2233.21, 5081.3, 48.08, true) < 5.0) then
                     if IsControlJustReleased(0, Keys['E']) then
                         if incollect == false then
-                            raccoltapotato()
+                            collectionpotato()
                         else
                         end
                     end
@@ -67,10 +67,10 @@ Citizen.CreateThread(function()
     end
 end)
 
--- Raccolta cotton
-Citizen.CreateThread(function()
+-- collection cotton
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
 		local coords = GetEntityCoords(PlayerPedId())
         if (GetDistanceBetweenCoords(coords, 1582.035156, 2167.279053, 79.307007, true) < 10.0) then
             DrawText3D(1582.035156, 2167.279053, 79.307007, 'Premi ~b~[E] per raccogliere del cotone', 0.4)
@@ -80,7 +80,7 @@ Citizen.CreateThread(function()
                 if (GetDistanceBetweenCoords(coords, 1582.035156, 2167.279053, 79.307007, true) < 5.0) then
                     if IsControlJustReleased(0, Keys['E']) then
                         if incollect == false then
-                            raccoltacotton()
+                            collectioncotton()
                         else
                         end
                     end
@@ -90,10 +90,10 @@ Citizen.CreateThread(function()
     end
 end)
 
--- Raccolta apple
-Citizen.CreateThread(function()
+-- collection apple
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
 		local coords = GetEntityCoords(PlayerPedId())
         if (GetDistanceBetweenCoords(coords, 2343.850586, 4756.087891, 34.806641, true) < 10.0) then
             DrawText3D(2343.850586, 4756.087891, 34.806641, 'Premi ~b~[E] per raccogliere delle mele', 0.4)
@@ -103,7 +103,7 @@ Citizen.CreateThread(function()
                 if (GetDistanceBetweenCoords(coords, 2343.850586, 4756.087891, 34.806641, true) < 5.0) then
                     if IsControlJustReleased(0, Keys['E']) then
                         if incollect == false then
-                            raccoltaapple()
+                            collectionapple()
                         else
                         end
                     end
@@ -113,10 +113,10 @@ Citizen.CreateThread(function()
     end
 end)
 
--- raccolta grain
-Citizen.CreateThread(function()
+-- collection grain
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
 		local coords = GetEntityCoords(PlayerPedId())
         if (GetDistanceBetweenCoords(coords, 2607.942871, 4399.490234, 40.973633, true) < 10.0) then
             DrawText3D(2607.942871, 4399.490234, 40.973633, 'Premi ~b~[E] per raccogliere il grano', 0.4)
@@ -126,7 +126,7 @@ Citizen.CreateThread(function()
                 if (GetDistanceBetweenCoords(coords, 2607.942871, 4399.490234, 40.973633, true) < 5.0) then
                     if IsControlJustReleased(0, Keys['E']) then
                         if incollect == false then
-                            raccoltagrain()
+                            collectiongrain()
                         else
                         end
                     end
@@ -144,8 +144,7 @@ local blips = {
     {title="Raccolta grano", colour=0, id=398, x = 2607.942871, y = 4399.490234, z = 40.973633}
 }
 
-Citizen.CreateThread(function()
-
+CreateThread(function()
    for _, info in pairs(blips) do
 	 info.blip = AddBlipForCoord(info.x, info.y, info.z)
 	 SetBlipSprite(info.blip, info.id)
@@ -160,38 +159,38 @@ Citizen.CreateThread(function()
 
 end)
 
---Patate
-function raccoltapotato()
-    TriggerServerEvent('farmer:raccoltapotato')
+--potato
+function collectionpotato()
+    TriggerServerEvent('farmer:collectionpotato')
     exports["esx_notify"]:Notify("info", 3000, "Raccolta patate in corso")
     incollect = true
-    Citizen.Wait(6000)
+    Wait(6000)
     incollect = false
 end
 
 -- cotton
-function raccoltacotton()
-    TriggerServerEvent('farmer:raccoltacotton')
+function collectioncotton()
+    TriggerServerEvent('farmer:collectioncotton')
     exports["esx_notify"]:Notify("info", 3000, "Raccolta cotone in corso")
     incollect = true
-    Citizen.Wait(6000)
+    Wait(6000)
     incollect = false
 end
 
 -- apple
-function raccoltaapple()
-    TriggerServerEvent('farmer:raccoltaapple')
+function collectionapple()
+    TriggerServerEvent('farmer:collectionapple')
     exports["esx_notify"]:Notify("info", 3000, "Raccolta mele in corso")
     incollect = true
-    Citizen.Wait(6000)
+    Wait(6000)
     incollect = false
 end
 
 -- grain
-function raccoltagrain()
-    TriggerServerEvent('farmer:raccoltagrain')
+function collectiongrain()
+    TriggerServerEvent('farmer:collectiongrain')
     exports["esx_notify"]:Notify("info", 3000, "Raccolta grano in corso")
     incollect = true
-    Citizen.Wait(6000)
+    Wait(6000)
     incollect = false
 end
