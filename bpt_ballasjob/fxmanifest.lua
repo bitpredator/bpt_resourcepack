@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'bpt_ballasjob'
 lua54 'yes'
-version '0.0.3'
+version '0.0.4'
 autthor'bitpredator'
 
 shared_script '@es_extended/imports.lua'
