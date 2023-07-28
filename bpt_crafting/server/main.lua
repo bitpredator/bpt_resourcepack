@@ -12,8 +12,8 @@ end
 function getCraftingLevel(identifier)
     return tonumber(
         MySQL.Sync.fetchScalar(
-            "SELECT `crafting_level` FROM users WHERE identifier = @identifier ",
-            {["@identifier"] = identifier}
+         "SELECT `crafting_level` FROM users WHERE identifier = @identifier ",
+         {["@identifier"] = identifier}
         )
     )
 end
@@ -166,7 +166,7 @@ ESX.RegisterServerCallback(
 
 ESX.RegisterServerCallback(
     "bpt_crafting:getItemNames",
-    function(source, cb)
+    function(_, cb)
         local names = {}
 
         MySQL.Async.fetchAll(
