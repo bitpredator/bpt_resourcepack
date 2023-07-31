@@ -1,6 +1,6 @@
-local HasAlreadyEnteredMarker, CurrentAction,
-    CurrentActionData = false, false, false, false, false, {}
-local LastZone, CurrentActionMsg
+local HasAlreadyEnteredMarker
+local CurrentAction, CurrentActionMsg, CurrentActionData = nil, '', {}
+local LastZone
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
@@ -46,7 +46,7 @@ function OpenCloakroom()
         {icon = "fas fa-shirt", title = _U('wear_work'), value = "wear_work"},
     }
 
-    ESX.OpenContext("right", elements, function(menu,element)
+    ESX.OpenContext("right", elements, function(_,element)
         if element.value == "wear_citizen" then
             ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
                 TriggerEvent('skinchanger:loadSkin', skin)
@@ -61,7 +61,7 @@ function OpenCloakroom()
             end)
         end
 		ESX.CloseContext()
-    end, function(menu)
+    end, function()
         CurrentAction = 'cloakroom'
         CurrentActionMsg = _U('cloakroom_prompt')
         CurrentActionData = {}
@@ -89,7 +89,7 @@ function OpenVehicleSpawnerMenu()
                 }
             end
 
-            ESX.OpenContext("right", elements, function(menu,element)
+            ESX.OpenContext("right", elements, function(_,element)
                 if not ESX.Game.IsSpawnPointClear(Config.Zones.VehicleSpawnPoint.Pos, 5.0) then
                     ESX.ShowNotification(_U('spawnpoint_blocked'))
                     return
@@ -105,7 +105,7 @@ function OpenVehicleSpawnerMenu()
                     return
                 end, vehicleProps.model, vehicleProps)
                 TriggerServerEvent('esx_society:removeVehicleFromGarage', 'baker', vehicleProps)
-            end, function(menu)
+            end, function()
                 CurrentAction = 'vehicle_spawner'
                 CurrentActionMsg = _U('spawner_prompt')
                 CurrentActionData = {}
@@ -126,7 +126,7 @@ function OpenVehicleSpawnerMenu()
 			}
 		end
 
-        ESX.OpenContext("right", elements, function(menu,element)
+        ESX.OpenContext("right", elements, function(_,element)
             if not ESX.Game.IsSpawnPointClear(Config.Zones.VehicleSpawnPoint.Pos, 5.0) then
                 ESX.ShowNotification(_U('spawnpoint_blocked'))
                 return
@@ -141,7 +141,7 @@ function OpenVehicleSpawnerMenu()
                 ESX.ShowNotification(_U('vehicle_spawned'), "success")
             end, element.value, {plate = "BAKE JOB"})
 			ESX.CloseContext()
-        end, function(menu)
+        end, function()
             CurrentAction = 'vehicle_spawner'
             CurrentActionMsg = _U('spawner_prompt')
             CurrentActionData = {}
@@ -176,13 +176,13 @@ function OpenbakerActionsMenu()
         }
     end
 
-    ESX.OpenContext("right", elements, function(menu,element)
+    ESX.OpenContext("right", elements, function(_,element)
         if element.value == 'boss_actions' then
-            TriggerEvent('esx_society:openBossMenu', 'baker', function(data, menu)
+            TriggerEvent('esx_society:openBossMenu', 'baker', function(_, menu)
                 menu.close()
             end)
         end
-    end, function(menu)
+    end, function()
         CurrentAction = 'baker_actions_menu'
         CurrentActionMsg = _U('press_to_open')
         CurrentActionData = {}
@@ -195,7 +195,7 @@ function OpenMobileBakerActionsMenu()
         {icon = "fas fa-scroll", title = _U('billing'), value = "billing"}
     }
 
-    ESX.OpenContext("right", elements, function(menu,element)
+    ESX.OpenContext("right", elements, function(_,element)
         if element.value == "billing" then
             ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'billing', {
                 title = _U('invoice_amount')
@@ -215,7 +215,7 @@ function OpenMobileBakerActionsMenu()
                         ESX.ShowNotification(_U('billing_sent'))
                     end
                 end
-            end, function(data, menu)
+            end, function(_, menu)
                 menu.close()
             end)
         end
@@ -263,7 +263,7 @@ AddEventHandler('bpt_bakerjob:hasEnteredMarker', function(zone)
     end
 end)
 
-AddEventHandler('bpt_bakerjob:hasExitedMarker', function(zone)
+AddEventHandler('bpt_bakerjob:hasExitedMarker', function()
     ESX.CloseContext()
     CurrentAction = nil
 end)
@@ -273,10 +273,10 @@ CreateThread(function()
     local blip = AddBlipForCoord(Config.Zones.BakerActions.Pos.x, Config.Zones.BakerActions.Pos.y,
         Config.Zones.BakerActions.Pos.z)
 
-    SetBlipSprite(blip, 156)
+    SetBlipSprite(blip, 88)
     SetBlipDisplay(blip, 4)
     SetBlipScale(blip, 1.0)
-    SetBlipColour(blip, 5)
+    SetBlipColour(blip, 0)
     SetBlipAsShortRange(blip, true)
 
     BeginTextCommandSetBlipName('STRING')

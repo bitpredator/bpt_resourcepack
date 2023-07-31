@@ -6,13 +6,13 @@ Locales['it'] = {
   ['wear_work'] = 'abiti da lavoro',
   -- garage
   ['spawner_prompt'] = 'premi [E] per accedere al garage.',
-  ["vehicle_spawned"] = "veicolo generato con successo!",
+  ["vehicle_spawned"] = "veicolo ritirato con successo!",
   ['store_veh'] = 'premi [E] per depositare il veicolo',
-  ['spawn_veh'] = 'genera veicolo',
+  ['spawn_veh'] = 'ritira veicolo',
   ['spawnpoint_blocked'] = 'un veicolo blocca lo spawnpoint!',
   ['only_baker'] = 'puoi depositare solo veicoli aziendali.',
   ['empty_garage'] = 'nessun veicolo nel garage!',
-  ['taking_service'] = 'prendi servizio: Armaiolo',
+  ['taking_service'] = 'prendi servizio: Fornaio',
   ['full_service'] = 'servizio completo: ',
   ['amount_invalid'] = 'importo non valido',
   ['press_to_open'] = 'premi [E] per accedere al menu',
@@ -24,5 +24,5 @@ Locales['it'] = {
   ['comp_earned'] =  'la tua azienda ha guadagnato $%s \n - hai guadagnato $%s',
   ['boss_actions'] =  'Azioni del capo',
   ['blip_baker'] =  'Fornaio.',
-  ['baker'] =  'baker'
+  ['baker'] =  'Forno'
 }
