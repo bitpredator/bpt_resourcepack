@@ -1,6 +1,6 @@
-local HasAlreadyEnteredMarker, CurrentAction,
-    CurrentActionData = false, false, false, false, false, {}
-local LastZone, CurrentActionMsg
+local HasAlreadyEnteredMarker
+local CurrentAction, CurrentActionMsg, CurrentActionData = nil, '', {}
+local LastZone
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
@@ -46,7 +46,7 @@ function OpenCloakroom()
         {icon = "fas fa-shirt", title = _U('wear_work'), value = "wear_work"},
     }
 
-    ESX.OpenContext("right", elements, function(menu,element)
+    ESX.OpenContext("right", elements, function(_,element)
         if element.value == "wear_citizen" then
             ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
                 TriggerEvent('skinchanger:loadSkin', skin)
@@ -61,7 +61,7 @@ function OpenCloakroom()
             end)
         end
 		ESX.CloseContext()
-    end, function(menu)
+    end, function()
         CurrentAction = 'cloakroom'
         CurrentActionMsg = _U('cloakroom_prompt')
         CurrentActionData = {}
@@ -89,7 +89,7 @@ function OpenVehicleSpawnerMenu()
                 }
             end
 
-            ESX.OpenContext("right", elements, function(menu,element)
+            ESX.OpenContext("right", elements, function(_,element)
                 if not ESX.Game.IsSpawnPointClear(Config.Zones.VehicleSpawnPoint.Pos, 5.0) then
                     ESX.ShowNotification(_U('spawnpoint_blocked'))
                     return
@@ -105,7 +105,7 @@ function OpenVehicleSpawnerMenu()
                     return
                 end, vehicleProps.model, vehicleProps)
                 TriggerServerEvent('esx_society:removeVehicleFromGarage', 'ammu', vehicleProps)
-            end, function(menu)
+            end, function()
                 CurrentAction = 'vehicle_spawner'
                 CurrentActionMsg = _U('spawner_prompt')
                 CurrentActionData = {}
@@ -126,7 +126,7 @@ function OpenVehicleSpawnerMenu()
 			}
 		end
 
-        ESX.OpenContext("right", elements, function(menu,element)
+        ESX.OpenContext("right", elements, function(_,element)
             if not ESX.Game.IsSpawnPointClear(Config.Zones.VehicleSpawnPoint.Pos, 5.0) then
                 ESX.ShowNotification(_U('spawnpoint_blocked'))
                 return
@@ -141,7 +141,7 @@ function OpenVehicleSpawnerMenu()
                 ESX.ShowNotification(_U('vehicle_spawned'), "success")
             end, element.value, {plate = "AMMU JOB"})
 			ESX.CloseContext()
-        end, function(menu)
+        end, function()
             CurrentAction = 'vehicle_spawner'
             CurrentActionMsg = _U('spawner_prompt')
             CurrentActionData = {}
@@ -180,13 +180,13 @@ function OpenAmmuActionsMenu()
         }
     end
 
-    ESX.OpenContext("right", elements, function(menu,element)
+    ESX.OpenContext("right", elements, function(_,element)
         if element.value == 'boss_actions' then
-            TriggerEvent('esx_society:openBossMenu', 'ammu', function(data, menu)
+            TriggerEvent('esx_society:openBossMenu', 'ammu', function(_, menu)
                 menu.close()
             end)
         end
-    end, function(menu)
+    end, function()
         CurrentAction = 'ammu_actions_menu'
         CurrentActionMsg = _U('press_to_open')
         CurrentActionData = {}
@@ -199,7 +199,7 @@ function OpenMobileAmmuActionsMenu()
         {icon = "fas fa-scroll", title = _U('billing'), value = "billing"}
     }
 
-    ESX.OpenContext("right", elements, function(menu,element)
+    ESX.OpenContext("right", elements, function(_,element)
         if element.value == "billing" then
             ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'billing', {
                 title = _U('invoice_amount')
@@ -219,7 +219,7 @@ function OpenMobileAmmuActionsMenu()
                         ESX.ShowNotification(_U('billing_sent'))
                     end
                 end
-            end, function(data, menu)
+            end, function(_, menu)
                 menu.close()
             end)
         end
@@ -267,7 +267,7 @@ AddEventHandler('bpt_ammujob:hasEnteredMarker', function(zone)
     end
 end)
 
-AddEventHandler('bpt_ammujob:hasExitedMarker', function(zone)
+AddEventHandler('bpt_ammujob:hasExitedMarker', function()
     ESX.CloseContext()
     CurrentAction = nil
 end)
