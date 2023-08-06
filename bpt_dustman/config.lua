@@ -1,14 +1,8 @@
 Config                            = {}
-
 Config.DrawDistance               = 10.0 -- How close do you need to be for the markers to be drawn (in GTA units).
-
-Config.MaxInService               = -1 -- How much people can be in service at once?
 Config.EnablePlayerManagement     = true -- Enable society managing.
 Config.EnableSocietyOwnedVehicles = false
-
-Config.Locale                     = 'it'
-
-Config.OxInventory                = ESX.GetConfig().OxInventory
+Config.Locale                     = 'en'
 
 Config.AuthorizedVehicles = {
 	{model = 'biff', label = 'Camion'}
@@ -38,14 +32,14 @@ Config.Zones = {
 	},
 
 	DustmanActions = {
-		Pos   = {x = -420.342865, y = -1675.054932, z = 19.018311}, 
+		Pos   = {x = -420.342865, y = -1675.054932, z = 19.018311},
 		Size  = {x = 0.6, y = 0.6, z = 0.6},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 20, Rotate = true
 	},
 
 	Cloakroom = {
-		Pos     = {x = -430.760437, y = -1672.958252, z = 19.018311}, 
+		Pos     = {x = -430.760437, y = -1672.958252, z = 19.018311},
 		Size    = {x = 0.6, y = 0.6, z = 0.6},
 		Color   = {r = 204, g = 204, b = 0},
 		Type    = 21, Rotate = true
