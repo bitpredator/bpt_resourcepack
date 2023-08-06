@@ -1,6 +1,6 @@
-local HasAlreadyEnteredMarker, CurrentAction,
-    CurrentActionData = false, false, false, false, false, {}
-local LastZone, CurrentActionMsg
+local HasAlreadyEnteredMarker
+local CurrentAction, CurrentActionMsg, CurrentActionData = nil, '', {}
+local LastZone
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
@@ -46,7 +46,7 @@ function OpenCloakroom()
         {icon = "fas fa-shirt", title = _U('wear_work'), value = "wear_work"},
     }
 
-    ESX.OpenContext("right", elements, function(menu,element)
+    ESX.OpenContext("right", elements, function(_,element)
         if element.value == "wear_citizen" then
             ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
                 TriggerEvent('skinchanger:loadSkin', skin)
@@ -61,7 +61,7 @@ function OpenCloakroom()
             end)
         end
         ESX.CloseContext()
-    end, function(menu)
+    end, function()
         CurrentAction = 'cloakroom'
         CurrentActionMsg = _U('cloakroom_prompt')
         CurrentActionData = {}
@@ -89,7 +89,7 @@ function OpenVehicleSpawnerMenu()
                 }
             end
 
-            ESX.OpenContext("right", elements, function(menu,element)
+            ESX.OpenContext("right", elements, function(_,element)
                 if not ESX.Game.IsSpawnPointClear(Config.Zones.VehicleSpawnPoint.Pos, 5.0) then
                     ESX.ShowNotification(_U('spawnpoint_blocked'))
                     return
@@ -105,7 +105,7 @@ function OpenVehicleSpawnerMenu()
                     return
                 end, vehicleProps.model, vehicleProps)
                 TriggerServerEvent('esx_society:removeVehicleFromGarage', 'dustman', vehicleProps)
-            end, function(menu)
+            end, function()
                 CurrentAction = 'vehicle_spawner'
                 CurrentActionMsg = _U('spawner_prompt')
                 CurrentActionData = {}
@@ -125,7 +125,7 @@ function OpenVehicleSpawnerMenu()
 			}
 		end
 
-        ESX.OpenContext("right", elements, function(menu,element)
+        ESX.OpenContext("right", elements, function(_,element)
             if not ESX.Game.IsSpawnPointClear(Config.Zones.VehicleSpawnPoint.Pos, 5.0) then
                 ESX.ShowNotification(_U('spawnpoint_blocked'))
                 return
@@ -138,7 +138,7 @@ function OpenVehicleSpawnerMenu()
                 ESX.ShowNotification(_U('vehicle_spawned'), "success")
             end, element.value, {plate = "DUST JOB"})
 			ESX.CloseContext()
-        end, function(menu)
+        end, function()
             CurrentAction = 'vehicle_spawner'
             CurrentActionMsg = _U('spawner_prompt')
             CurrentActionData = {}
@@ -155,10 +155,6 @@ function DeleteJobVehicle()
     else
         if IsInAuthorizedVehicle() then
             ESX.Game.DeleteVehicle(CurrentActionData.vehicle)
-
-            if Config.MaxInService ~= -1 then
-                TriggerServerEvent('esx_service:disableService', 'dustman')
-            end
         else
             ESX.ShowNotification(_U('only_dustman'))
         end
@@ -178,13 +174,13 @@ function OpenDustmanActionsMenu()
         }
     end
 
-    ESX.OpenContext("right", elements, function(menu,element)
+    ESX.OpenContext("right", elements, function(_,element)
         if element.value == 'boss_actions' then
-            TriggerEvent('esx_society:openBossMenu', 'dustman', function(data, menu)
+            TriggerEvent('esx_society:openBossMenu', 'dustman', function(_, menu)
                 menu.close()
             end)
         end
-    end, function(menu)
+    end, function()
         CurrentAction = 'dustman_actions_menu'
         CurrentActionMsg = _U('press_to_open')
         CurrentActionData = {}
@@ -194,23 +190,20 @@ end
 function OpenMobileDustmanActionsMenu()
     local elements = {
         {unselectable = true, icon = "fas fa-dustman", title = _U('dustman')},
-        {icon = "fas fa-scroll", title = _U('billing'), value = "billing"},
+        {icon = "fas fa-scroll", title = _U('billing'), value = "billing"}
     }
 
-    ESX.OpenContext("right", elements, function(menu,element)
+    ESX.OpenContext("right", elements, function(_,element)
         if element.value == "billing" then
-            local elements2 = {
-                {unselectable = true, icon = "fas fa-dustman", title = element.title},
-                {title = "Amount", input = true, inputType = "number", inputMin = 1, inputMax = 250000, inputPlaceholder = "Amount to bill.."},
-                {icon = "fas fa-check-double", title = "Confirm", value = "confirm"}
-            }
+            ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'billing', {
+                title = _U('invoice_amount')
+            }, function(data, menu)
 
-            ESX.OpenContext("right", elements2, function(menu2,element2)
-                local amount = tonumber(menu2.eles[2].inputValue)
+                local amount = tonumber(data.value)
                 if amount == nil then
                     ESX.ShowNotification(_U('amount_invalid'))
                 else
-                    ESX.CloseContext()
+                    menu.close()
                     local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
                     if closestPlayer == -1 or closestDistance > 3.0 then
                         ESX.ShowNotification(_U('no_players_near'))
@@ -220,6 +213,8 @@ function OpenMobileDustmanActionsMenu()
                         ESX.ShowNotification(_U('billing_sent'))
                     end
                 end
+            end, function(_, menu)
+                menu.close()
             end)
         end
     end)
@@ -266,7 +261,7 @@ AddEventHandler('bpt_dustmanjob:hasEnteredMarker', function(zone)
     end
 end)
 
-AddEventHandler('bpt_dustmanjob:hasExitedMarker', function(zone)
+AddEventHandler('bpt_dustmanjob:hasExitedMarker', function()
     ESX.CloseContext()
     CurrentAction = nil
 end)
